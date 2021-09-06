@@ -1,0 +1,99 @@
+<!doctype html><html lang="pt-br"><head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <title>Equações do Segundo Grau</title> 
+  <style>
+    body {
+      text-align: center;
+      font: normal 15pt Arial;
+      background: rgb(58,135,228);
+      background: linear-gradient(90deg, rgba(58,135,228,1) 20%, rgba(37,166,207,1) 80%);
+    }
+    header {
+      color: white;
+      text-align: center;
+    }
+    section {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      width: 350px;
+      margin: auto;
+      box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.600);
+    }
+    footer {
+      color: white;
+      text-align: center;
+      font-style: italic;
+    }
+    .divs {
+      margin-top: 10px;
+    }
+    #BtnCal {
+      margin-top: 20px;
+      width: 100px;
+      height: 30px;
+    }
+    </style> 
+ </head> 
+ <body> 
+  <header> 
+   <h1>Equações do Segundo Grau</h1> 
+  </header> 
+  <section> 
+   <div id="divVal"> 
+    Valor de A: <input type="text" name="A" id="A" class="divs"> 
+    <br> 
+    Valor de B: <input type="text" name="B" id="B" class="divs"> 
+    <br> 
+    Valor de C: <input type="text" name="C" id="C" class="divs"> 
+    <br> 
+    <input type="button" value="Calcular" onclick="Cal()" id="BtnCal"> 
+   </div> 
+   <div id="res" class="divs">
+     Resultado: 
+   </div> 
+  </section> 
+  <footer> 
+   <p>©MiguelS1H4</p> 
+  </footer> 
+  <script>
+    function Cal() {
+      /*Recebe Valor de A*/
+      var EntradaA_Text = window.document.getElementById('A')
+      var ValorA_Number = Number(EntradaA_Text.value)
+      /*Recebe Valor de B*/
+      var EntradaB_Text = window.document.getElementById('B')
+      var ValorB_Number = Number(EntradaB_Text.value)
+      /*Recebe Valor de C*/
+      var EntradaC_Text = window.document.getElementById('C')
+      var ValorC_Number = Number(EntradaC_Text.value)
+      var res = window.document.getElementById('res')
+      if (ValorA_Number == 0 && ValorB_Number == 0 && ValorC_Number == 0) {
+        window.alert("Verifique os dados e tente novamente.")
+        res.innerHTML = `<strong>Erro</strong>`
+      }
+      else if (ValorA_Number < 0) {
+        res.innerHTML = `A concavidade é para <strong>baixo</strong> <br/>`
+      } else {
+        res.innerHTML = `A concavidade é para <strong>cima</strong> <br/>`
+      }
+      var Delta = (ValorB_Number**2) - (4*ValorA_Number*ValorC_Number)
+        res.innerHTML += `Delta é igual a <strong>${Delta}</strong> <br/>`
+      if (Delta >= 0) {
+        var x1 = (-ValorB_Number + Math.sqrt(Delta)) / (2*ValorA_Number)
+        var x2 = (-ValorB_Number - Math.sqrt(Delta)) / (2*ValorA_Number)
+          res.innerHTML += `x1 é igual a <strong>${x1}</strong> <br/>`
+          res.innerHTML += `x2 é igual a <strong>${x2}</strong> <br/>`
+      } else {
+        res.innerHTML += `Essa equação não possui raízes reais <br/>`
+      }
+      var xv = -ValorB_Number / (2*ValorA_Number)
+      var yv = -Delta / (4*ValorA_Number)
+        res.innerHTML += `Xv é igual a <strong>${xv}</strong> <br/>`
+        res.innerHTML += `Yv é igual a <strong>${yv}</strong>`
+    }
+  </script> 
+</body>
+</html>
